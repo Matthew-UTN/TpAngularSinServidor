@@ -1,0 +1,33 @@
+<div class="container, animated fadeIn, col-md-12" style="margin-top: 70px; ">
+  <div class="row">
+    <div class="card" *ngFor="let instruAux of instrumentoArray; let i = index"
+      style="margin-left: auto; width: 600px; height: 205px;margin-bottom: 20px;margin-right: auto;">
+      <div class="row no-gutters">
+        <div class="col-auto">
+          <button mdbBtn type="button" color="default" outline="true" (click)="verInstrumento(instruAux.id)" mdbWavesEffect style="max-height: 200px;">
+            <img class="card-img-top" src="assets/img/{{instruAux.imagen}}" alt="{{instruAux.instrumento}}"
+              style="min-height:100px; max-height:200px">
+          </button>
+        </div>
+        <div class="col">
+          <div class="card-block px-2" style="margin-top: 20px; text-align: left">
+            <h3 class="card-title">{{instruAux.instrumento}}</h3>
+            <h1 class="card-text" style="text-align: left">
+              $ {{ instruAux.precio }}
+            </h1>
+
+            <p class="card-text" style="text-align: left">
+              <mdb-icon fas icon="truck" style="color:green" *ngIf="instruAux.costoEnvio == 'G'"></mdb-icon>
+              <span style="color:green" *ngIf="instruAux.costoEnvio == 'G'"> Envió gratis a todo el país</span>
+              <span style="color:orange" *ngIf="instruAux.costoEnvio != 'G'">Costo de Envio Interior de Argentina ${{instruAux.costoEnvio}}</span>
+            </p>
+            
+            <p class="card-text" style="text-align: left">
+              {{ instruAux.cantidadVendida }} vendidos
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
